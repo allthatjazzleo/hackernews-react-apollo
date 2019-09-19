@@ -1,9 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React, { Component } from 'react'
+import LinkList from './LinkList'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+class App extends Component {
+  render() {
+    return <LinkList />
+  }
+}
+
+export default App
