@@ -42,8 +42,9 @@ class LinkList extends Component {
   // }
   render() {
     return (
-      <Query query={FEED_QUERY}>
-        {({ loading, error, data }) => {
+      <React.Fragment>
+      <Query fetchPolicy="no-cache" query={FEED_QUERY}>
+        {({ loading, error, data, refetch }) => {
           {/* var min = 1;
           var max = 100;
           var rand =  parseInt(min + (Math.random() * (max-min)));
@@ -51,8 +52,9 @@ class LinkList extends Component {
           if (rand%2===0) return <div>even</div> */}
           if (loading) return <div>Fetching</div>
           if (error) return <div>error${error.message}</div>
+          this.refetch = refetch;
           const linksToRender = data.feed.links
-
+          console.log("query")
           return (
             <div>
               {linksToRender.map(link => <Link key={link.id} link={link} />)}
@@ -60,6 +62,8 @@ class LinkList extends Component {
           )
         }}
       </Query>
+      <button onClick={()=>this.refetch()}>Refetch</button>
+      </React.Fragment>
     )
   }
 }
