@@ -4,7 +4,7 @@ import CreateLink from './CreateLink'
 import Header from './Header'
 import { Switch, Route } from 'react-router-dom'
 import Login from './Login'
-
+import Try from './Try'
 class App extends Component {
   render() {
     return (
@@ -17,6 +17,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
           </Switch>
         </div>
+        {/* <Try/> */}
       </div>
     )
   }
